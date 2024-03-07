@@ -1,13 +1,10 @@
 import { Routes } from '@angular/router';
+import { TabsPage } from './tabs/tabs.page';
 
 export const routes: Routes = [
   {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
-  },
-  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'auth',
     pathMatch: 'full',
   },
   {
@@ -18,9 +15,28 @@ export const routes: Routes = [
     path: 'offers',
     loadComponent: () => import('./offers/offers.page').then( m => m.OffersPage)
   },
+  // {
+  //   path: 'places',
+  //   loadComponent: () => import('./places/places.page').then( m => m.PlacesPage)
+  // },
+  {
+    path: 'tabs',
+    component: TabsPage,
+    children: [
+      {
+        path: 'places',
+        loadComponent: () =>  import('./places/places.page').then( m => m.PlacesPage)
+      },
+      {
+        path: 'offers',
+        loadComponent: () => import('./offers/offers.page').then( m => m.OffersPage)
+      }
+    ]
+  },
   {
     path: 'places',
-    loadComponent: () => import('./places/places.page').then( m => m.PlacesPage)
+    redirectTo: '/tabs/places',
+    pathMatch: 'full',
   },
   {
     path: 'tabs',

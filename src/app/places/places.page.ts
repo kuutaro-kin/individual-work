@@ -11,6 +11,7 @@ import { IonicModule } from '@ionic/angular';
   imports: [IonicModule, CommonModule, FormsModule]
 })
 export class PlacesPage implements OnInit {
+  places: string[] = ['Black Sand Beach', 'Carnival', 'Cruise', 'Skii Resort'];
 
   constructor() { }
 
@@ -18,3 +19,4 @@ export class PlacesPage implements OnInit {
   }
 
 }
+
